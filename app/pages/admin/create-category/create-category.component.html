@@ -1,0 +1,41 @@
+<div class="mt-5">
+    <div class="cantainer">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <h3>Add Category</h3>
+                    <hr>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" [noValidate]="false">
+
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label>Category Name</label>
+                                    <input type="text" pattern="[a-zA-z\s]{3,}" class="form-control" ngModel name="categoryName" #nameRef="ngModel" required>
+                                    <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+
+                                        <div *ngIf="nameRef.errors?.['required']" class="alert alert-danger">Name is required.</div>
+                            
+                                        <div *ngIf="nameRef.errors?.['pattern']" class="alert alert-danger">Name must be of min 3 chars, no special
+                                            chars or numbers allowed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label>Books</label>
+                                    <select name="newBooks" id="newBooks" class="form-control" ngModel required multiple>
+                                        <option value="" disabled> --- SELECT BOOKS ---</option>
+                                        <option [value]="item" *ngFor="let item of bookList">{{item.bookName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

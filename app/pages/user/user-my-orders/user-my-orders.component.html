@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h3>My Orders</h3>
+                <hr>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Order ID</th>
+                            <th>Order Date</th>
+                            <th>Payment Mode</th>
+                            <th>Order Status</th>
+                            <th>Quantity</th>
+                            <th>Total Cost</th>
+                            <th>Link</th>
+                            <th>Cancel</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of orderList">
+                            <td>{{item?.orderId}}</td>
+                            <td>{{item?.orderDate | date}}</td>
+                            <td>{{item?.payment?.mode}}</td>
+                            <td>{{item?.orderStatus}}</td>
+                            <td>{{item?.quantity}}</td>
+                            <td>{{item?.totalCost | currency : "INR" : "symbol"}}</td>
+                            <td>
+                                <a *ngIf="item?.orderStatus === 'DELIVERED'" href="https://www.africau.edu/images/default/sample.pdf" target="_blank">Click to view book</a>
+                            </td>
+
+                            <td>
+                                
+                                <button *ngIf="item?.orderStatus !== 'Cancelled' && item?.orderStatus !== 'Declined'" (click)="onCancel(item)" type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Cancel
+                                </button>
+                           
+                            
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

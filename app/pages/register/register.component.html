@@ -1,0 +1,56 @@
+<div class="register_page mt-4">
+    <div class="cantainer">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h3>User Registration</h3><hr>
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" [noValidate]="false">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" pattern="[a-zA-Z\s]{3,30}" class="form-control" ngModel name="name" #nameRef="ngModel" required>
+                                    <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+
+                                        <div *ngIf="nameRef.errors?.['required']" class="alert alert-danger">Name is required.</div>
+                            
+                                        <div *ngIf="nameRef.errors?.['pattern']" class="alert alert-danger">Name must be of min 3 chars, no special
+                                            chars allowed..</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label >Email address</label>
+                                    <input type="email" class="form-control" ngModel name="emailId" #emailRef="ngModel" required  >
+                                    <div *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+
+                                        <div *ngIf="emailRef.errors?.['required']" class="alert alert-danger">Email is required.</div>
+                             
+                                        <div *ngIf="emailRef.errors?.['email']" class="alert alert-danger">Please enter valid email, eg:
+                                            name@gmail.com.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label >Password</label>
+                                    <input  type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" class="form-control" ngModel name="password" #pwdRef="ngModel" required>
+                                    <div *ngIf="pwdRef.invalid && (pwdRef.dirty || pwdRef.touched)">
+
+                                        <div *ngIf="pwdRef.errors?.['required']" class="alert alert-danger">Password is required.</div>
+                                        <div *ngIf="pwdRef.errors?.['pattern']" class="alert alert-danger">Password must contain min 8 and max 16
+                                            alphanumeric ,only @#!%^&* allowed .</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="register_page mt-4">
+    <div class="cantainer">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h3>Add new book</h3>
+                    <hr>
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" [noValidate]="false">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label>Book Name</label>
+                                    <input type="text" pattern="[A-Za-z0-9\s]{3,}" class="form-control" ngModel name="bookName" #nameRef="ngModel" required>
+                                    <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+
+                                        <div *ngIf="nameRef.errors?.['required']" class="alert alert-danger">Name is required.</div>
+                            
+                                        <div *ngIf="nameRef.errors?.['pattern']" class="alert alert-danger">Name must be of min 3 chars, no special
+                                            chars allowed only alphanumerics allowed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label>Book Author</label>
+                                    <input type="text" pattern="[A-Za-z\s]{3,}" class="form-control" ngModel name="bookAuthor" #nameRef="ngModel" required>
+                                    <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+
+                                        <div *ngIf="nameRef.errors?.['required']" class="alert alert-danger">Name is required.</div>
+                            
+                                        <div *ngIf="nameRef.errors?.['pattern']" class="alert alert-danger">Name must be of min 3 chars, no special
+                                            chars allowed </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label>Publisher</label>
+                                    <input type="text" pattern="[A-Za-z\s]{3,}" class="form-control" ngModel name="publisher" #nameRef="ngModel" required>
+                                    <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)">
+
+                                        <div *ngIf="nameRef.errors?.['required']" class="alert alert-danger">Name is required.</div>
+                            
+                                        <div *ngIf="nameRef.errors?.['pattern']" class="alert alert-danger">Name must be of min 3 chars, no special
+                                            chars allowed </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" min="1" step="0.01" class="form-control" ngModel name="price" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary mt-3">Add Book</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
